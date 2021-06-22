@@ -50,12 +50,15 @@
                     </div>
                 </div>
                 <div class="card-body">
+
+                    @include('admin.includes.alerts')
+                    
                     <table class="table table-condensed">
                         <thead>
                             <tr>
                                 <th>Nome</th>
                                 <th>Preço</th>
-                                <th style="width: 170px">Ações</th>
+                                <th style="width: 210px">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -72,6 +75,9 @@
                                         </a>
                                         <a href="{{ route('plans.edit', $plan->id) }}" class="btn btn-warning btn-sm">
                                             <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a href="{{ route('plans.profiles', $plan->id) }}" class="btn btn-secondary btn-sm">
+                                            <i class="fas fa-users"></i>
                                         </a>
                                         <form action="{{ route('plans.destroy', $plan->id) }}" class="form-horizontal" method="POST" style="display: inline">
                                             @csrf

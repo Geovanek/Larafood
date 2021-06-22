@@ -44,6 +44,9 @@
                     </div>
                 </div>
                 <div class="card-body">
+
+                    @include('admin.includes.alerts')
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -56,13 +59,13 @@
                                 <tr>
                                     <td>{{ $detail->name }}</td>
                                     <td>
-                                        <a href="{{ route('plans.show', $detail->url) }}" class="btn btn-info btn-sm">
+                                        <a href="{{ route('details.plan.show', [$plan->url, $detail->id]) }}" class="btn btn-info btn-sm">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('plans.edit', $detail->id) }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ route('details.plan.edit', [$plan->url, $detail->id]) }}" class="btn btn-warning btn-sm">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('plans.destroy', $detail->id) }}" class="form-horizontal" method="POST" style="display: inline">
+                                        <form action="{{ route('details.plan.destroy', [$plan->url, $detail->id]) }}" class="form-horizontal" method="POST" style="display: inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">
